@@ -1,16 +1,140 @@
-# React + Vite
+Acacia Tree Farms
+Web Skeleton and Integration Hub
+React + Vite Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Demo
+https://accia.netlify.app/
 
-Currently, two official plugins are available:
+────────────────────────────────────────────
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+About the Project
 
-## React Compiler
+Acacia Tree Farms is a modern frontend platform designed as the official digital presence for AcaciaTreeFarms.com.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The system focuses on three core pillars
 
-## Expanding the ESLint configuration
+🌿 Corporate Social Responsibility
+🔗 Blockchain Traceability (ACX)
+☕ Green Coffee Marketplace
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+This repository provides a clean, scalable React skeleton that acts as the frontend shell and is ready to connect with backend APIs and blockchain services.
+
+The goal is simplicity, performance, and professional brand quality.
+
+────────────────────────────────────────────
+
+Technology Stack
+
+⚡ Framework → React 18 with Vite
+🎨 Styling → Tailwind CSS (responsive and mobile-first)
+🧩 Icons → Lucide React
+🛣 Routing → React Router DOM (SPA architecture)
+🚀 Deployment → Netlify with GitHub CI/CD
+
+Fast loading, lightweight, optimized for regions with slower internet speeds (Ethiopia friendly).
+
+────────────────────────────────────────────
+
+Project Structure
+
+src/pages
+Contains the main views
+Home
+CSR
+Blockchain
+Marketplace
+
+src/components
+Reusable UI components
+Includes BlockchainFrame for traceability display
+
+src/services
+API configuration and backend connection logic
+
+Clean separation makes integration simple for any backend team.
+
+────────────────────────────────────────────
+
+Integration Guide
+
+This project is built plug-and-play for backend developers.
+
+Traditional Backend
+Marketplace and CSR data
+
+Developer → X
+Connection → REST API
+
+Steps
+Update src/services/api.js with backend base URL
+Replace static coffee data inside Marketplace.jsx with API responses
+Map JSON data to existing UI cards
+
+Blockchain Integration
+ACX Traceability
+
+Developer → Y
+Connection → Web3 or Blockchain Provider
+
+Steps
+Use BlockchainFrame.jsx
+Pass two props
+
+verified → boolean
+transactionHash → string
+
+The component automatically renders the branded verification UI.
+
+────────────────────────────────────────────
+
+Setup and Installation
+
+Clone repository
+
+git clone https://github.com/Asr13b/acacia-tree-farms.git
+
+Install dependencies
+
+npm install
+
+Run development server
+
+npm run dev
+
+Build for production
+
+npm run build
+
+────────────────────────────────────────────
+
+Brand Specifications
+
+Primary Color → #3B2322 (Deep Coffee Brown)
+Typography → Modern Sans-serif
+Design → Clean, minimal, professional
+Performance → Optimized assets for low bandwidth environments
+
+────────────────────────────────────────────
+
+Key Features
+
+Responsive mobile-first design
+Reusable component architecture
+Easy backend replacement
+Blockchain ready
+SEO friendly structure
+Fast load times
+Clean professional UI
+
+────────────────────────────────────────────
+
+Contact
+
+Asrar Fedlu Kedir
+Full-Stack Developer
+Frontend Architecture • API Integration • Security-Focused Engineering
+
+GitHub
+https://github.com/Asr13b
+
+────────────────────────────────────────────
