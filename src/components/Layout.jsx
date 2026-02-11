@@ -1,9 +1,10 @@
-// src/components/Layout.jsx
-import React from "react";
+
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Coffee, Mail, Phone, MapPin } from "lucide-react";
+import { Coffee, Mail, Phone, MapPin, X } from "lucide-react";
 
 const Layout = ({ children }) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
@@ -13,6 +14,11 @@ const Layout = ({ children }) => {
     { name: "Green Coffee Marketplace", path: "/marketplace" },
   ];
 
+  // Close mobile menu when link is clicked
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation Bar with #3B2322 background */}
@@ -20,7 +26,11 @@ const Layout = ({ children }) => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2">
+            <Link
+              to="/"
+              className="flex items-center space-x-2"
+              onClick={handleLinkClick}
+            >
               <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
                 <Coffee className="w-5 h-5" />
               </div>
@@ -54,24 +64,68 @@ const Layout = ({ children }) => {
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button className="md:hidden">
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+            {/* Mobile Menu Button - Hamburger/Close toggle */}
+            <button
+              className="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu Dropdown - Shows when isMobileMenuOpen is true */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-[#3B2322] border-t border-white/10 py-4">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-col space-y-3">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    onClick={handleLinkClick}
+                    className={`px-4 py-3 rounded-lg font-medium transition-colors ${
+                      location.pathname === link.path
+                        ? "bg-white/20 text-amber-100"
+                        : "text-white hover:bg-white/10"
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+
+                {/* External Link in Mobile Menu */}
+                <a
+                  href="https://acaciabeverage.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleLinkClick}
+                  className="px-4 py-3 text-white hover:bg-white/10 rounded-lg font-medium transition-colors flex items-center justify-between"
+                >
+                  <span>Products & Equipment</span>
+                  <span className="text-amber-100">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Main Content */}
